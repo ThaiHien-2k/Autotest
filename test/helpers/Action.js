@@ -1,4 +1,4 @@
-const { By } = require("selenium-webdriver");
+const { By, until } = require("selenium-webdriver");
 const fs = require("fs");
 const path = require("path");
 
@@ -12,6 +12,9 @@ class Action {
   }
   async input(element, value) {
     await this.driver.findElement(element).sendKeys(value);
+  }
+  async waitForElement(element) {
+    await this.driver.wait(until.elementLocated(element), 30000);
   }
   async takeScreenshot() {
     const screenshot = await this.driver.takeScreenshot();

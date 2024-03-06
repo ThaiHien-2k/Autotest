@@ -1,4 +1,4 @@
-const { By } = require("selenium-webdriver");
+const { By, until } = require("selenium-webdriver");
 const { Action, getXpath } = require("../helpers/Action");
 
 async function day3Goal(driver) {
@@ -17,12 +17,12 @@ async function day3Goal(driver) {
 
   //test search
   await action.click(tabName);
-  await driver.sleep(7000);
+  await action.waitForElement(icon);
   await action.click(icon);
-  await driver.sleep(3000);
+  await action.waitForElement(inputPopup);
   await action.input(inputPopup, "dev");
   await action.click(button);
-  await driver.sleep(3000);
+  await action.waitForElement(selectValue);
   await action.click(selectValue);
 
   //screenShot

@@ -10,41 +10,39 @@ async function day5Goal(driver) {
     "//table[@id='database-ds-list']//tr[@id='1']//td[2]"
   );
   const selectValue2 = By.xpath("//tr[@id='1']//td[4]");
-  const selectTable = By.xpath("//*[contains(text(),'追加')]");
+  const buttonAdd = By.xpath("//*[contains(text(),'追加')]");
   const icon = By.name("kyodo_hensyu_user_icon");
+  const table = getXpath("kyodo_hensyu", "table");
 
   await moveToURL.waitForTitle(title_apl002, 30000);
   await action.click(getXpath("共同編集者", "tab"));
-  await driver.sleep(3000);
+  await action.waitForElement(table);
 
   //check rows
-  const tableRows = await driver.findElements(
-    getXpath("kyodo_hensyu", "table")
-  );
+  const tableRows = await driver.findElements(table);
 
   if (tableRows.length === 1) {
-    await action.click(selectTable);
+    await action.click(buttonAdd);
   } else {
   }
-  await driver.sleep(300);
-
+  await action.waitForElement(selectValue2);
   //click icon
   await action.click(selectValue2);
   await action.click(icon);
 
   //select value
-  await driver.sleep(3000);
+  await action.waitForElement(getXpath("氏名", "inputPopup"));
   await action.input(getXpath("氏名", "inputPopup"), "dev");
-  await driver.sleep(300);
+  await action.waitForElement(getXpath("絞込み", "button"));
   await action.click(getXpath("絞込み", "button"));
-  await driver.sleep(300);
+  await action.waitForElement(selectValue1);
   await action.click(selectValue1);
 
   //check value select
-  const value1 = await await driver.findElement(selectValue1).getText();
+  const value1 = await driver.findElement(selectValue1).getText();
   await action.click(getXpath("決定", "button"));
 
-  const value2 = await await driver.findElement(selectValue2).getText();
+  const value2 = await driver.findElement(selectValue2).getText();
 
   if (value1 === value2) {
     console.log("Match");
