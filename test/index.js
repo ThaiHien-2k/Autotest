@@ -3,7 +3,7 @@ const { Builder } = require("selenium-webdriver");
 const { day2Goal } = require("./testCase/Day2");
 const { day3Goal } = require("./testCase/Day3");
 const { day5Goal } = require("./testCase/Day5");
-(async function HomePage() {
+(async function Index() {
   const driver = await new Builder().forBrowser("chrome").build();
   const startTime = new Date().getTime();
   try {
