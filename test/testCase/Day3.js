@@ -1,5 +1,4 @@
 const { By } = require("selenium-webdriver");
-const MoveToURLTest = require("../helpers/MoveToURLTest");
 const { Action, getXpath } = require("../helpers/Action");
 
 async function day3Goal(driver) {

@@ -1,5 +1,5 @@
-const MoveToURLTest = require("../helpers/MoveToURLTest");
-const LoginTest = require("../helpers/LoginTest");
+const MoveToURL = require("../helpers/MoveToURL");
+const Login = require("../helpers/Login");
 const { Action, getXpath } = require("../helpers/Action");
 
 async function day2Goal(driver) {
@@ -12,8 +12,8 @@ async function day2Goal(driver) {
   const title_apl002 = "S&S作業依頼 作成";
   const handlesNumber = 1;
 
-  const moveToURLTest = new MoveToURLTest(driver);
-  const loginTest = new LoginTest(driver);
+  const moveToURLTest = new MoveToURL(driver);
+  const loginTest = new Login(driver);
   const action = new Action(driver);
 
   // Open url apl004

@@ -1,7 +1,7 @@
 const { By } = require("selenium-webdriver");
 const { getXpath } = require("./Action");
 
-class LoginTest {
+class Login {
   constructor(driver) {
     this.driver = driver;
     this.usernameInput = By.id("im_user");
@@ -15,4 +15,4 @@ class LoginTest {
   }
 }
 
-module.exports = LoginTest;
+module.exports = Login;

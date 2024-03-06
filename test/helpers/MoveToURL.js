@@ -1,6 +1,6 @@
-const { By, until } = require("selenium-webdriver");
+const { until } = require("selenium-webdriver");
 
-class MoveToURLTest {
+class MoveToURL {
   constructor(driver) {
     this.driver = driver;
   }
@@ -17,4 +17,4 @@ class MoveToURLTest {
   }
 }
 
-module.exports = MoveToURLTest;
+module.exports = MoveToURL;

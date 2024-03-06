@@ -1,10 +1,10 @@
 const { By } = require("selenium-webdriver");
-const MoveToURLTest = require("../helpers/MoveToURLTest");
+const MoveToURL = require("../helpers/MoveToURL");
 const { Action, getXpath } = require("../helpers/Action");
 
 async function day5Goal(driver) {
   const title_apl002 = "S&S作業依頼 作成";
-  const moveToURLTest = new MoveToURLTest(driver);
+  const moveToURLTest = new MoveToURL(driver);
   const action = new Action(driver);
 
   await moveToURLTest.waitForTitle(title_apl002, 30000);
