@@ -57,6 +57,8 @@ function getXpath(label, type) {
       return By.xpath(`//*[contains(text(),"${label}")]/../../../a`);
     case "inputPopup":
       return By.xpath(`//*[contains(text(),"${label}")]/../../td/input`);
+    case "table":
+      return By.xpath(`//table[@id="${label}"]`);
     default:
       throw new Error("Invalid type: " + type);
   }
