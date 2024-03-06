@@ -4,10 +4,10 @@ const { Action, getXpath } = require("../helpers/Action");
 
 async function day5Goal(driver) {
   const title_apl002 = "S&S作業依頼 作成";
-  const moveToURLTest = new MoveToURL(driver);
+  const moveToURL = new MoveToURL(driver);
   const action = new Action(driver);
 
-  await moveToURLTest.waitForTitle(title_apl002, 30000);
+  await moveToURL.waitForTitle(title_apl002, 30000);
   await action.click(getXpath("共同編集者", "tab"));
   await driver.sleep(3000);
 

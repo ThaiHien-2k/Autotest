@@ -5,7 +5,7 @@ const { day3Goal } = require("./testCase/Day3");
 const { day5Goal } = require("./testCase/Day5");
 (async function HomePage() {
   const driver = await new Builder().forBrowser("chrome").build();
-
+  const startTime = new Date().getTime();
   try {
     try {
       //day 2 goal
@@ -20,6 +20,9 @@ const { day5Goal } = require("./testCase/Day5");
       console.log(error);
     }
   } finally {
-    // await driver.quit();
+    const endTime = new Date().getTime();
+    const executionTime = (endTime - startTime) / 1000;
+    console.log(`\nExecution Time: ${executionTime} s\n`);
+    await driver.quit();
   }
 })();
