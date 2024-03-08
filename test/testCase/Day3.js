@@ -17,12 +17,9 @@ async function day3Goal(driver) {
 
   //test search
   await action.click(tabName);
-  await action.waitForElement(icon);
   await action.click(icon);
-  await action.waitForElement(inputPopup);
   await action.input(inputPopup, "dev");
   await action.click(button);
-  await action.waitForElement(selectValue);
   await action.click(selectValue);
 
   //screenShot

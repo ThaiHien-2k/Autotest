@@ -7,14 +7,16 @@ class Action {
     this.driver = driver;
   }
 
-  async click(button) {
-    await this.driver.findElement(button).click();
+  async click(element) {
+    await this.waitForElement(element);
+    await this.driver.findElement(element).click();
   }
   async input(element, value) {
+    await this.waitForElement(element);
     await this.driver.findElement(element).sendKeys(value);
   }
   async waitForElement(element) {
-    await this.driver.wait(until.elementLocated(element), 30000);
+    await this.driver.wait(until.elementLocated(element), 20000);
   }
   async takeScreenshot() {
     const screenshot = await this.driver.takeScreenshot();
@@ -46,22 +48,28 @@ class Action {
   }
 }
 
-function getXpath(label, type) {
+const TYPE = {
+  input: "../input",
+  icon: "../a",
+  tab: "../../a",
+  buttonHeader: "../../../a",
+  inputPopup: "../../td/input",
+};
+
+function getXpath(label, type = "default") {
   switch (type) {
     case "input":
-      return By.xpath(`//*[contains(text(),"${label}")]/../input`);
     case "icon":
-      return By.xpath(`//*[contains(text(),"${label}")]/../a`);
     case "tab":
-      return By.xpath(`//*[contains(text(),"${label}")]/../../a`);
+    case "buttonHeader":
+    case "inputPopup":
+      return By.xpath(`//*[contains(text(),"${label}")]/${TYPE[type]}`);
     case "button":
       return By.xpath(`//input[@value="${label}"]`);
-    case "buttonHeader":
-      return By.xpath(`//*[contains(text(),"${label}")]/../../../a`);
-    case "inputPopup":
-      return By.xpath(`//*[contains(text(),"${label}")]/../../td/input`);
     case "table":
       return By.xpath(`//table[@id="${label}"]`);
+    case "default":
+      return By.xpath(label);
     default:
       throw new Error("Invalid type: " + type);
   }

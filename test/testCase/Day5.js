@@ -25,17 +25,13 @@ async function day5Goal(driver) {
     await action.click(buttonAdd);
   } else {
   }
-  await action.waitForElement(selectValue2);
   //click icon
   await action.click(selectValue2);
   await action.click(icon);
 
   //select value
-  await action.waitForElement(getXpath("氏名", "inputPopup"));
   await action.input(getXpath("氏名", "inputPopup"), "dev");
-  await action.waitForElement(getXpath("絞込み", "button"));
   await action.click(getXpath("絞込み", "button"));
-  await action.waitForElement(selectValue1);
   await action.click(selectValue1);
 
   //check value select
