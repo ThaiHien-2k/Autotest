@@ -24,7 +24,7 @@ const { day6Goal } = require("./testCase/Day6");
       // await day5Goal(driver);
 
       //day 6 goal
-      await day6Goal(driver);
+      await day6Goal(driver, "1142_202402_01_20240307143930");
     } catch (error) {
       console.log(error);
     }
