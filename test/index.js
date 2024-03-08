@@ -32,6 +32,6 @@ const { day6Goal } = require("./testCase/Day6");
     const endTime = new Date().getTime();
     const executionTime = (endTime - startTime) / 1000;
     console.log(`\nExecution Time: ${executionTime}s\n`);
-    // await driver.quit();
+    await driver.quit();
   }
 })();
