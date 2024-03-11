@@ -7,11 +7,12 @@ class Login {
     this.driver = driver;
     this.usernameInput = By.id("im_user");
     this.passwordInput = By.id("im_password");
-    this.loginButton = getXpath("ログイン", "button");
+    // this.loginButton = getXpath("ログイン", "button");
+    this.loginButton = getXpath("Login", "button");
     this.url = url;
   }
   async login(username, password) {
-    await this.driver.manage().window().maximize();
+    // await this.driver.manage().window().maximize();
     await new MoveToURL(this.driver).open(this.url);
     await this.driver.findElement(this.usernameInput).sendKeys(username);
     await this.driver.findElement(this.passwordInput).sendKeys(password);

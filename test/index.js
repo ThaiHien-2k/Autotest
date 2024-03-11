@@ -4,9 +4,14 @@ const { day2Goal } = require("./testCase/Day2");
 const { day3Goal } = require("./testCase/Day3");
 const { day5Goal } = require("./testCase/Day5");
 const { day6Goal } = require("./testCase/Day6");
+const { day7Goal } = require("./testCase/Day7");
 (async function Index() {
+  const insecureOriginDominURL = "http://158.101.91.74/imdi/";
   const option = new chrome.Options();
   option.addArguments("--log-level=3");
+  option.addArguments(
+    "--unsafely-treat-insecure-origin-as-secure=" + insecureOriginDominURL
+  );
   const driver = await new Builder()
     .forBrowser("chrome")
     .setChromeOptions(option)
@@ -24,7 +29,10 @@ const { day6Goal } = require("./testCase/Day6");
       // await day5Goal(driver);
 
       //day 6 goal
-      await day6Goal(driver, "1142_202402_01_20240307143930");
+      // await day6Goal(driver, "1142_202402_01_20240307143930");
+
+      //day 7 goal
+      await day7Goal(driver);
     } catch (error) {
       console.log(error);
     }
