@@ -5,10 +5,16 @@ const { day3Goal } = require("./testCase/Day3");
 const { day5Goal } = require("./testCase/Day5");
 const { day6Goal } = require("./testCase/Day6");
 const { day7Goal } = require("./testCase/Day7");
+const path = require("path");
 (async function Index() {
   const insecureOriginDominURL = "http://158.101.91.74/imdi/";
   const option = new chrome.Options();
   option.addArguments("--log-level=3");
+  option.setUserPreferences({
+    "download.default_directory": path.join(__dirname, "../downloads"),
+    "download.prompt_for_download": false,
+  });
+
   option.addArguments(
     "--unsafely-treat-insecure-origin-as-secure=" + insecureOriginDominURL
   );

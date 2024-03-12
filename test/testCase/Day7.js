@@ -1,8 +1,9 @@
 const MoveToURL = require("../helpers/MoveToURL");
 const Login = require("../helpers/Login");
-const { Action, getXpath } = require("../helpers/Action");
+const { Action, getXpath, getNewestFile } = require("../helpers/Action");
 const fs = require("fs");
 const path = require("path");
+const { count } = require("console");
 
 async function day7Goal(driver) {
   const url_export = "http://158.101.91.74/imdi/bloommaker/export";
@@ -57,23 +58,21 @@ async function day7Goal(driver) {
   }
 
   await action.click(getXpath("//input[@value='Submit']"));
+  const date = new Date();
   await driver.sleep(10000);
 
-  //check file download
-  async function isFileDownloaded(filePath) {
-    return fs.existsSync(filePath);
-  }
+  const downloadPath = path.join(__dirname, "../../downloads");
+  const lastFile = getNewestFile(downloadPath);
 
-  const downloadFilePath = path.join(
-    "C:\\Users\\User\\Downloads",
-    "im_bloommaker-data.zip"
-  );
-
-  const isDownloaded = await isFileDownloaded(downloadFilePath);
-  if (isDownloaded) {
+  if (
+    lastFile &&
+    date.getHours() === lastFile.getHours() &&
+    lastFile.getMinutes() - date.getMinutes() <= 1
+  ) {
     console.log("Download successful");
   } else {
     console.log("Download failed");
   }
 }
+
 module.exports = { day7Goal };

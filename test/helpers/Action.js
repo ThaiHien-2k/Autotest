@@ -75,4 +75,26 @@ function getXpath(label, type = "default") {
   }
 }
 
-module.exports = { Action, getXpath };
+function getNewestFile(downloadPath) {
+  const fileList = fs.readdirSync(downloadPath);
+
+  let newestFile = null;
+  let newestFileTime = 0;
+  let birthtime = null;
+  fileList.forEach((file) => {
+    const filePath = path.join(downloadPath, file);
+
+    const filename = fs.statSync(filePath);
+
+    if (filename.birthtimeMs > newestFileTime) {
+      newestFile = file;
+      newestFileTime = filename.birthtimeMs;
+      birthtime = new Date(filename.birthtime);
+    }
+  });
+
+  const formattedBirthtime = birthtime;
+  return formattedBirthtime;
+}
+
+module.exports = { Action, getXpath, getNewestFile };
