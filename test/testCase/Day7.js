@@ -64,6 +64,9 @@ async function day7Goal(driver) {
   const downloadPath = path.join(__dirname, "../../downloads");
   const lastFile = getNewestFile(downloadPath);
 
+  if (!fs.existsSync(downloadPath)) {
+    fs.mkdirSync(downloadPath);
+  }
   if (
     lastFile &&
     date.getHours() === lastFile.getHours() &&
