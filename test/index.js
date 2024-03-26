@@ -27,18 +27,14 @@ const path = require("path");
     try {
       // // day 2 goal
       // await day2Goal(driver);
-
       // //day 3 goal
       // await day3Goal(driver);
-
       // //day 5 goal
       // await day5Goal(driver);
-
       //day 6 goal
       // await day6Goal(driver, "1142_202402_01_20240307143930");
-
       //day 7 goal
-      await day7Goal(driver);
+      // await day7Goal(driver);
     } catch (error) {
       console.log(error);
     }
